@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>New Member Adding Page</title>
+        <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  .input{
+    height: 6%;
+    width: 30%;
+    font-size: 40%;
+  }
+
+  .dropdown{
+    height: 6%;
+    width: 30%;
+    font-size: 100%;
+    text-align: center;
+  }
+
+  .btn{
+    height: 50px;
+    width: 130px;
+    font-size: 40px;
+  }
+
+
+
+  label {
+  display: inline-block;
+  width: 30%;
+  text-align: left;
+
+
+
+ }​
+  body{text-align: center;  }
+    #enterDetails {float: cente ; padding-top: 3% ;width: 100%; height: 100%; background-color: black; color: floralwhite; text-align: center; font-size: 250%}
+    .header{
+    padding: 3%;
+    text-align: center;
+    background: #A9A9A9;
+    color: black;
+
+    }
+
+    body{
+       background-color: black;
+    }
+
+    </style>
+    <header>
+    <h1 class="header">Payment Details</h1>
+    </header>
+  </head>
+    <body>
+
+      <div id="enterdetails">
+        <label>Room Number </label>
+          <select id="room_no" class="dropdown">
+                                      <option>room 1</option>
+                                      <option>room 2</option>
+                                      <option>room 3</option>
+                                      <option>room 4</option>
+                                       <option>room 5</option>
+                                      </select> <br><br>
+          <label>Name </label>
+            <input type="text" id="name" class="input" required><br><br>
+
+          <label>Amount </label>
+          <input type="number" id="amount"  class="input" required><br><br>
+          <label>Date </label>
+          <input type="date" id="date"  class="input" required><br><br>
+
+          <input type="button" class="btn" id="insert" value="Insert">
+
+
+</div>
+
+<script type="module">
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+apiKey: "AIzaSyCF_VOsyAyxR8sdVG5Mnl7oMhAz5no3z94",
+authDomain: "room-details-e8403.firebaseapp.com",
+databaseURL: "https://room-details-e8403-default-rtdb.firebaseio.com",
+projectId: "room-details-e8403",
+storageBucket: "room-details-e8403.appspot.com",
+messagingSenderId: "827987151969",
+appId: "1:827987151969:web:bcc9a487c5cb8d9995ae20",
+measurementId: "G-FHRGFP0X09"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
+     var slno=0;
+      import {getDatabase, ref, get, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.9.4/firebase-database.js";
+    const db = getDatabase();
+
+
+
+
+     var slno = slno++;
+     var room_no = document.querySelector("#room_no");
+     var name = document.querySelector("#name");
+     var date=document.querySelector("#date");
+
+      var amount= document.querySelector("#amount");
+      var todaydate = document.querySelector("#todaydate");
+
+      var insertBtn=document.querySelector("#insert");
+
+      function InsertData(){
+        set(ref(db, "rentdetails/"+slno),{
+          name: name.value,
+          room_no: room_no.value,
+          amount: amount.value,
+          date: date.value,
+          slno:slno++
+        })
+        .then(()=>{
+          alert("data stored successfully");
+        })
+        .catch((error)=>{
+          alert(error);
+        });
+
+      }
+
+      insertBtn.addEventListener('click', InsertData);
+</script>
+
+    </body>
+</html>

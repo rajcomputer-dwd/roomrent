@@ -1,0 +1,46 @@
+.header{
+padding: 2%;
+text-align: center;
+background: #A9A9A9;
+color: black;
+font-size: 850%;
+padding: 5.5%;
+}
+.footer{
+padding: 3%;
+text-align: center;
+background: #A9A9A9;
+color: black;
+font-size: 500%;
+padding: 3.5%;
+}
+
+
+.btn
+{
+   margin: 0;
+  position: relative;
+  top: 50%;
+  width: 100%;
+  display: block;
+  font-size: 610%;
+  background-color:	 #adad85;
+  color: floralwhite;
+
+}
+
+.button .btn:hover {
+ background-color: black;
+ color: yellow;
+}
+
+
+
+
+body{
+ 
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: 100% 100%;
+ background-color: rgb(3, 3, 3);
+}
